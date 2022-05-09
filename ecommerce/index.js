@@ -17,43 +17,53 @@ products.push(mug,book,draw,pic);
 
 const payments = [30,20,0]
 
-let msg1 = "Wich product would you like tu buy?" + "\n" +
-           "1 - Mug with custom image and text" + "\n" +
-           "2 - Ilustration book" + "\n" +
-           "3 - Personalized draw" + "\n" +
-           "4 - Select image with custom text" + "\n";
+let radio = document.getElementsByName("Product");
+let check;
+let check2;
+let button1 = document.getElementById("b1");
+let button2 = document.getElementById("b2");
+let payMethod = document.getElementsByName("Payment")
+let container = document.getElementById("text1")
+let container2 = document.getElementById("text2")
 
-let menu1 = () => parseInt(prompt(msg1));
-let product = menu1(); 
-
-if (product < 1 || product > 4 || isNaN(product)) {
-    alert("La opcion seleccionada es incorrecta");
-    product = menu1(); 
+function selectedChoise(){
+    for (let i = 0; i < radio.length; i++) {
+        if (radio[i].checked) {
+            check = radio[i].value;
+            if (check == "Mug") {
+                container2.innerHTML = '<h2>You have selected a mug with custom image and text</h2>';
+            }else if (check == "Book") {
+                container2.innerHTML = '<h2>You have selected an ilustration book</h2>';
+            }else if (check == "Draw") {
+                container2.innerHTML = '<h2>You have selected a personalized draw</h2>';
+            }else if (check == "Pic") {
+                container2.innerHTML = '<h2>You have selected an image with custom text</h2>';
+            }else{
+                container2.innerHTML = '<h2>You have to select a valid option</h2>';
+            }
+            console.log(check);
+        }
+    }
 }
-
-let msg = "wich payment method do you want to use" + "\n" +
-           "1 - Wired transfer" + "\n" +
-           "2 - Credit card" + "\n" +
-           "3 - Mercadopago" + "\n";
-
-let menu = () => parseInt(prompt(msg));
-let result = menu();
-
-if (result < 1 || result > 3 || isNaN(result)) {
-    alert("La opcion seleccionada es incorrecta");
-    result = menu(); 
+function selectedChoise2(){
+    for (let i = 0; i < payMethod.length; i++) {
+        if (payMethod[i].checked) {
+            check2 = payMethod[i].value;
+            console.log(check2);
+            if (check2 == "Transfer") {
+                container.innerHTML = '<h2>You have to select wired transfer as your payment method</h2>';
+            }
+            else if (check2 == "Ccard") {
+                container.innerHTML = '<h2>You have to select credit card as your payment method</h2>';
+            }
+            else if (check2 == "Mp") {
+                container.innerHTML = '<h2>You have to select Mercado Pago as your payment method</h2>';
+            }else{
+                container.innerHTML = '<h2>You have to select a valid option</h2>';
+            }
+        }
+    }
 }
-
-
-function discount(price,percent) {
-    return price - ((price * percent) / 100);
-}
-console.log(products[product-1])
-let productName = products[product-1].name;
-let paymentDisc = payments[result-1];
-let productPrice = products[product-1].price;
-
-
-
-alert("El producto " + productName + " tiene un descuento de " + paymentDisc + " siendo el precio final de " + discount(productPrice,paymentDisc));
+button1.onclick = selectedChoise;
+button2.onclick = selectedChoise2;  
 
