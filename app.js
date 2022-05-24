@@ -3,6 +3,7 @@ const productsEl = document.querySelector(".products");
 const cartItemsEl = document.querySelector(".cart-items");
 const subtotalEl = document.querySelector(".subtotal");
 const totalItemsInCartEl = document.querySelector(".total-items-in-cart");
+/* const emptyCartEl = document.querySelector(".cartClear") */
 
 // Render products
 function renderProducts(){
@@ -60,6 +61,41 @@ function updateCart() {
     
     // Save cart to local storage
     localStorage.setItem("CART", JSON.stringify(cart));
+}
+
+// Remove all items from the shopping cart
+
+/* function removeAllItemsFromCart(){
+    emptyCartEl.addEventListener('click', () => {
+        cart.length = 0;
+        
+        updateCart();
+    });
+} */
+
+// Remove all items from the shopping cart (sweetalert)
+function removeAllItemsFromCart() {
+    Swal.fire({
+        title: 'You are about to remove all items from your shopping cart, are you sure?',
+        text: "You won't be able to revert this!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, remove them!'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            cart.length = 0;
+
+            updateCart();
+
+            Swal.fire(
+                'Items removed!',
+                'All items from your shopping cart have been removed.',
+                'success'
+            );
+        }
+    })
 }
 
 // Calculate and render subtotal
@@ -127,3 +163,4 @@ function changeNumberOfUnits(action, id) {
 
     updateCart();
 }
+

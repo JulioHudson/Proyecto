@@ -415,8 +415,13 @@ main .model {
 .cart-footer .subtotal {
   background-color: white;
 }
+.cart-footer .cartClear {
+  background-color: red;
+
+  cursor: pointer;
+}
 .cart-footer .checkout {
-  background-color: rgb(242, 255, 58);
+  background-color:  lightgreen;
 
   cursor: pointer;
 }
