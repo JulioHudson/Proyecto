@@ -3,11 +3,15 @@ const productsEl = document.querySelector(".products");
 const cartItemsEl = document.querySelector(".cart-items");
 const subtotalEl = document.querySelector(".subtotal");
 const totalItemsInCartEl = document.querySelector(".total-items-in-cart");
-/* const emptyCartEl = document.querySelector(".cartClear") */
 
 // Render products
-function renderProducts(){
-    products.forEach((product) => {
+const renderProducts = async () => {
+    let resp = await fetch("./products.json")
+    let data = await resp.json()
+
+    prod = data.products
+
+    prod.forEach((product) => {
         productsEl.innerHTML += `
         <div class="item">
                 <div class="item-container">
@@ -62,16 +66,6 @@ function updateCart() {
     // Save cart to local storage
     localStorage.setItem("CART", JSON.stringify(cart));
 }
-
-// Remove all items from the shopping cart
-
-/* function removeAllItemsFromCart(){
-    emptyCartEl.addEventListener('click', () => {
-        cart.length = 0;
-        
-        updateCart();
-    });
-} */
 
 // Remove all items from the shopping cart (sweetalert)
 function removeAllItemsFromCart() {

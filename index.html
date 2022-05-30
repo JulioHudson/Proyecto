@@ -46,7 +46,7 @@
                 </ul>
             </nav>
             <div class="shopping-bag">
-                <a href="./cart.html">
+                <a href="#">
                     <img src="./icons/bag.png" alt="cart">
                     Cart
                     <div class="total-items-in-cart">
@@ -94,12 +94,11 @@
         <div class="products">
             <!-- render porducts here -->
         </div>
-        <div class="cart">
-            <div class="cart-header">
-                <div class="column1">Item</div>
-                <div class="column2">Unit price</div>
-                <div class="column3">Units</div>
-            </div>
+    </div>
+    <div class="shopping-container">
+        <div class="shopping-cart">
+            <h3>Shopping cart</h3>
+            <button id="cartClose">(X)</button>
             <div class="cart-items">
                 <!-- render cart items here -->
             </div>
@@ -111,7 +110,7 @@
                     Proceed to empty the cart
                 </div>
                 <div class="checkout">
-                    Proceed to checkout
+                    <a href="./pages/checkout.html">Proceed to checkout</a>
                 </div>
             </div>
         </div>
@@ -127,5 +126,6 @@
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="products.js"></script>
     <script src="app.js"></script>
+    <script src="cart.js"></script>
 </body>
 </html>
