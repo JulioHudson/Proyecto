@@ -3,8 +3,9 @@ const productsEl = document.querySelector(".products");
 const cartItemsEl = document.querySelector(".cart-items");
 const subtotalEl = document.querySelector(".subtotal");
 const totalItemsInCartEl = document.querySelector(".total-items-in-cart");
+let prod
 
-// Render products
+// Fetch JSON and render products
 const renderProducts = async () => {
     let resp = await fetch("./products.json")
     let data = await resp.json()
@@ -47,7 +48,7 @@ function addToCart(id){
     if (cart.some((item) => item.id === id)) {
         changeNumberOfUnits("plus", id);
     } else {
-        const item = products.find((product) => product.id === id);
+        const item = prod.find((product) => product.id === id);
     
         cart.push({
             ...item,
