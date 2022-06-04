@@ -9,7 +9,7 @@ const payment = async () => {
             description: Element.description,
             picture_url: Element.imgScr,
             category_id: Element.id,
-            quantity: Element.instock,
+            quantity: Element.numberOfUnits,
             currency_id: "ARS",
             unit_price: Element.price
         }
